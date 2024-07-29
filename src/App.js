@@ -10,6 +10,7 @@ function App() {
         <h1>Weather App</h1>
         <WeatherSearch />
       </header>
+      <p>https://github.com/JanineDavis/weather-react</p>
     </div>
   );
 }
