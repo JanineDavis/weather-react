@@ -1,16 +1,15 @@
-import logo from "./logo.svg";
 import "./App.css";
 import WeatherSearch from "./Weather";
+import React from "react";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <h1>Weather App</h1>
         <WeatherSearch />
       </header>
-      <p>https://github.com/JanineDavis/weather-react</p>
+      <a href="https://github.com/JanineDavis/weather-react">Git Repo</a>
     </div>
   );
 }
