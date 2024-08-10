@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./WeatherSearch.css";
+import FormattedDate from "./FormattedDate";
+import WeatherInfo from "./WeatherInfo";
 
 export default function WeatherSearch() {
   const [city, setCity] = useState("");
@@ -16,7 +18,8 @@ export default function WeatherSearch() {
       precipitation: response.data.main.precipitation,
       icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
       description: response.data.weather[0].description,
-      time: response.data.main.time,
+      date: new Date(response.data.dt * 1000),
+      name: response.data.main.name,
     });
   }
 
@@ -45,6 +48,7 @@ export default function WeatherSearch() {
           Search
         </button>
       </form>
+      <WeatherInfo data={weather} />;
     </div>
   );
 
@@ -52,13 +56,15 @@ export default function WeatherSearch() {
     return (
       <div>
         {form}
-        <h1>{city}</h1>
+        <h1>{weather.name}</h1>
         <ul>
           <li>Temperature: {Math.round(weather.temperature)}°C</li>
           <li className="text-capitalize">
             Description: {weather.description}
           </li>
-          <li>Time: {weather.time}</li>
+          <li>
+            <FormattedDate date={weather.date} />
+          </li>
         </ul>
         <div className="row">
           <div className="col-6">
