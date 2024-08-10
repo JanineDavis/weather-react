@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "./Weather.css";
 
 export default function WeatherSearch() {
   const [city, setCity] = useState("");
@@ -12,6 +13,7 @@ export default function WeatherSearch() {
       temperature: response.data.main.temp,
       wind: response.data.wind.speed,
       humidity: response.data.main.humidity,
+      precipitation: response.data.main.precipitation,
       icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
       description: response.data.weather[0].description,
     });
@@ -29,25 +31,43 @@ export default function WeatherSearch() {
   }
 
   let form = (
-    <form onSubmit={handleSubmit}>
-      <input type="search" placeholder="Enter a city.." onChange={updateCity} />
-      <button type="Submit">Search</button>
-    </form>
+    <div className="row">
+      <form onSubmit={handleSubmit}>
+        <input
+          type="search"
+          placeholder="Enter a city.."
+          onChange={updateCity}
+          autoFocus="on"
+        />
+
+        <button className="btn btn-primary" type="Submit">
+          Search
+        </button>
+      </form>
+    </div>
   );
 
   if (loaded) {
     return (
       <div>
         {form}
+        <h1>City</h1>
         <ul>
           <li>Temperature: {Math.round(weather.temperature)}°C</li>
           <li>Description: {weather.description}</li>
-          <li>Humidity: {weather.humidity}%</li>
-          <li>Wind: {Math.round(weather.wind)}km/h</li>
-          <li>
-            <img src={weather.icon} alt={weather.description} />
-          </li>
         </ul>
+        <div className="row">
+          <div className="col-6">
+            <img src={weather.icon} alt={weather.description} />
+          </div>
+          <div className="col-6">
+            <ul>
+              <li>Precipitation: {weather.rain}</li>
+              <li>Humidity: {weather.humidity}%</li>
+              <li>Wind: {Math.round(weather.wind)}km/h</li>
+            </ul>
+          </div>
+        </div>
       </div>
     );
   } else {
