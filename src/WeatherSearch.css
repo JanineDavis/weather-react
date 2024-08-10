@@ -1,4 +1,4 @@
-.Weather {
+.WeatherSearch {
   border: 1px solid #2f6ab6;
   color: egb(135, 135, 135);
   padding: 16px;
@@ -7,20 +7,20 @@
   border-radius: 4px;
 }
 
-.Weather form {
+.WeatherSearch form {
 }
-.Weather h1 {
+.WeatherSearch h1 {
   color: #2f6ab6;
   font-size: 24px;
   line-height: 29px;
   margin: 20px 0 0;
 }
 
-.Weather ul {
+.WeatherSearch ul {
   margin: 0;
   padding: 0;
 }
-.Weather li {
+.WeatherSearch li {
   font-size: 16px;
   font-weight: 100;
   line-height: 19px;

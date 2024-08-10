@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./Weather.css";
+import "./WeatherSearch.css";
 
 export default function WeatherSearch() {
   const [city, setCity] = useState("");
@@ -16,6 +16,7 @@ export default function WeatherSearch() {
       precipitation: response.data.main.precipitation,
       icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
       description: response.data.weather[0].description,
+      time: response.data.main.time,
     });
   }
 
@@ -51,10 +52,13 @@ export default function WeatherSearch() {
     return (
       <div>
         {form}
-        <h1>City</h1>
+        <h1>{city}</h1>
         <ul>
           <li>Temperature: {Math.round(weather.temperature)}°C</li>
-          <li>Description: {weather.description}</li>
+          <li className="text-capitalize">
+            Description: {weather.description}
+          </li>
+          <li>Time: {weather.time}</li>
         </ul>
         <div className="row">
           <div className="col-6">
@@ -64,7 +68,7 @@ export default function WeatherSearch() {
             <ul>
               <li>Precipitation: {weather.rain}</li>
               <li>Humidity: {weather.humidity}%</li>
-              <li>Wind: {Math.round(weather.wind)}km/h</li>
+              <li>Wind: {Math.round(weather.wind)} km/h</li>
             </ul>
           </div>
         </div>
