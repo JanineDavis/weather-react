@@ -48,10 +48,9 @@ export default function WeatherSearch() {
           Search
         </button>
       </form>
-      <WeatherInfo data={weather} />;
     </div>
   );
-
+  <WeatherInfo data={weather} />;
   if (loaded) {
     return (
       <div>
