@@ -50,7 +50,7 @@ export default function WeatherSearch() {
       </form>
     </div>
   );
-  <WeatherInfo data={weather} />;
+
   if (loaded) {
     return (
       <div>
