@@ -4,7 +4,7 @@ import FormattedDate from "./FormattedDate";
 export default function WeatherInfo(props) {
   return (
     <div className="WeatherInfo">
-      <h1>{props.data.name}</h1>
+      <h1>{props.data.city}</h1>
       <ul>
         <li>Temperature: {Math.round(props.data.temperature)}°C</li>
         <li className="text-capitalize">

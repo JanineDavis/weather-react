@@ -6,4 +6,35 @@
 .App footer {
   font-size: 11px;
   margin: 10px 0;
+  text-align: center;
+}
+
+.App {
+  border: 1px solid #2f6ab6;
+  color: egb(135, 135, 135);
+  padding: 16px;
+  margin: 30px auto;
+  max-width: 600px;
+  border-radius: 4px;
+}
+
+.App h1 {
+  color: #2f6ab6;
+  font-size: 34px;
+  line-height: 29px;
+  margin: 20px 0 10px;
+}
+
+.App ul {
+  margin: 0;
+  padding: 0;
+}
+.App li {
+  font-size: 16px;
+  font-weight: 100;
+  line-height: 19px;
+  list-style: none;
+}
+.App h2 {
+  font-size: 24px;
 }

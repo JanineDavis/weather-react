@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./WeatherSearch.css";
 import FormattedDate from "./FormattedDate";
 import WeatherInfo from "./WeatherInfo";
+import WeatherTemperature from "./WeatherTemperature";
 
 export default function WeatherSearch() {
   const [city, setCity] = useState("");
@@ -55,9 +55,13 @@ export default function WeatherSearch() {
     return (
       <div>
         {form}
-        <h1>{weather.name}</h1>
+        <h1>{weather.city}</h1>
         <ul>
-          <li>Temperature: {Math.round(weather.temperature)}°C</li>
+          <li>
+            <h2>
+              <WeatherTemperature celsius={weather.temperature} />
+            </h2>
+          </li>
           <li className="text-capitalize">
             Description: {weather.description}
           </li>
