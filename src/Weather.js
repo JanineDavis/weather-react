@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import FormattedDate from "./FormattedDate";
 import WeatherTemperature from "./WeatherTemperature";
+import WeatherForecast from "./WeatherForecast";
 
 export default function WeatherSearch() {
   const [city, setCity] = useState("");
@@ -47,6 +48,7 @@ export default function WeatherSearch() {
           Search
         </button>
       </form>
+      <WeatherForecast />
     </div>
   );
 
