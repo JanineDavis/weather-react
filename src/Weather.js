@@ -48,7 +48,6 @@ export default function WeatherSearch() {
           Search
         </button>
       </form>
-      <WeatherForecast />
     </div>
   );
 
@@ -81,6 +80,7 @@ export default function WeatherSearch() {
               <li>Wind: {Math.round(weather.wind)} km/h</li>
             </ul>
           </div>
+          <WeatherForecast />
         </div>
       </div>
     );
