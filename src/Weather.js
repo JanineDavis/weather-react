@@ -4,7 +4,7 @@ import FormattedDate from "./FormattedDate";
 import WeatherTemperature from "./WeatherTemperature";
 import WeatherForecast from "./WeatherForecast";
 
-export default function WeatherSearch() {
+export default function WeatherSearch(props) {
   const [city, setCity] = useState("");
   const [loaded, setLoaded] = useState(false);
   const [weather, setWeather] = useState({});
@@ -13,6 +13,7 @@ export default function WeatherSearch() {
     setLoaded(true);
     setWeather({
       temperature: response.data.main.temp,
+      coord: response.data.coord,
       wind: response.data.wind.speed,
       humidity: response.data.main.humidity,
       precipitation: response.data.main.precipitation,
@@ -62,9 +63,7 @@ export default function WeatherSearch() {
               <WeatherTemperature celsius={weather.temperature} />
             </h2>
           </li>
-          <li className="text-capitalize">
-            Description: {weather.description}
-          </li>
+          <li className="text-capitalize">{weather.description}</li>
           <li>
             <FormattedDate date={weather.date} />
           </li>
@@ -80,7 +79,7 @@ export default function WeatherSearch() {
               <li>Wind: {Math.round(weather.wind)} km/h</li>
             </ul>
           </div>
-          <WeatherForecast />
+          <WeatherForecast coordinates={weather.coord} />
         </div>
       </div>
     );
