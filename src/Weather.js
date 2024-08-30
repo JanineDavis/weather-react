@@ -11,16 +11,16 @@ export default function WeatherSearch(props) {
 
   function displayWeather(response) {
     setLoaded(true);
+    console.log(response);
     setWeather({
       temperature: response.data.main.temp,
       coord: response.data.coord,
       wind: response.data.wind.speed,
       humidity: response.data.main.humidity,
-      precipitation: response.data.main.precipitation,
       icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
       description: response.data.weather[0].description,
       date: new Date(response.data.dt * 1000),
-      name: response.data.main.name,
+      name: response.data.name,
     });
   }
 
@@ -56,12 +56,15 @@ export default function WeatherSearch(props) {
     return (
       <div>
         {form}
-        <h1>{weather.city}</h1>
+        <h1>{weather.name}</h1>
         <ul>
           <li>
             <h2>
               <WeatherTemperature celsius={weather.temperature} />
             </h2>
+            <div className="col-6">
+              <img src={weather.icon} alt={weather.description} />
+            </div>
           </li>
           <li className="text-capitalize">{weather.description}</li>
           <li>
@@ -70,11 +73,7 @@ export default function WeatherSearch(props) {
         </ul>
         <div className="row">
           <div className="col-6">
-            <img src={weather.icon} alt={weather.description} />
-          </div>
-          <div className="col-6">
             <ul>
-              <li>Precipitation: {weather.rain}</li>
               <li>Humidity: {weather.humidity}%</li>
               <li>Wind: {Math.round(weather.wind)} km/h</li>
             </ul>
